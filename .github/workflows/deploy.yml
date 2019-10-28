@@ -15,4 +15,5 @@ jobs:
       run: |
         sudo apt-get install python3-setuptools 
         pip3 install awscli --upgrade --user
+        echo =====
         aws --version
