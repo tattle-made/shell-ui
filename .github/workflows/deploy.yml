@@ -13,6 +13,6 @@ jobs:
       run: echo Hello, world2!
     - name: Run a multi-line script
       run: |
-        pip3 install -U pip setuptools 
+        sudo apt-get install python3-setuptools 
         pip3 install awscli --upgrade --user
         aws --version
