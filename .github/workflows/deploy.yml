@@ -13,8 +13,5 @@ jobs:
       run: echo Hello, world2!
     - name: Run a multi-line script
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-        pip3 --version
-        python --version
-        python3 --version
+        pip3 install awscli --upgrade --user
+        aws --version
