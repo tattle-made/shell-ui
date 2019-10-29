@@ -20,5 +20,5 @@ jobs:
         aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} 
         aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws configure set region us-west-2
-        aws configure get aws_access_key_id
+        aws s3 ls
         
