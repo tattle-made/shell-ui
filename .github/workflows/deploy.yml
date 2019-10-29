@@ -13,17 +13,6 @@ jobs:
       run: echo Hello, world2!
     - name: Run a multi-line script
       run: |
-        sudo apt-get install python3-setuptools 
-        pip3 install awscli --upgrade --user
-        echo ======
-        aws --version
-        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} 
-        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws configure set region us-west-2
-        aws s3 ls
-        echo ======
-        ls
-        echo ======
-        pwd
-        echo ======
+        npm install
+        npm run build
         
