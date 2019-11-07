@@ -1,6 +1,7 @@
 import React from 'react'
 import { isEmpty } from 'ramda'
 import formatBytes from 'pretty-bytes'
+import { Box } from 'grommet'
 
 function RedisLogo({ width = 32 }) {
   return (
@@ -49,17 +50,19 @@ export default function RedisStats({ stats }) {
   } = stats
 
   return (
-    <section className="row" style={{ padding: 20 }}>
-      <div className="box">
-        <RedisLogo width={42} />
-      </div>
+    <Box direction={'row'} gap={'medium'}>
 
-      <div className="box">
+      <Box>
+        <RedisLogo width={42} />
+      </Box>
+
+
+      <Box>
         Version
         <h2>{redis_version}</h2>
-      </div>
+      </Box>
 
-      <div className="box">
+      <Box>
         Memory usage
         <h2>{getMemoryUsage(used_memory, total_system_memory)}</h2>
         {Boolean(total_system_memory) ? (
@@ -72,22 +75,22 @@ export default function RedisStats({ stats }) {
             Could not retrieve total_system_memory
           </small>
         )}
-      </div>
+      </Box>
 
-      <div className="box">
+      <Box>
         Fragmentation ratio
         <h2>{mem_fragmentation_ratio}</h2>
-      </div>
+      </Box>
 
-      <div className="box">
+      <Box>
         Connected clients
         <h2>{connected_clients}</h2>
-      </div>
+      </Box>
 
-      <div className="box">
+      <Box>
         Blocked clients
         <h2>{blocked_clients}</h2>
-      </div>
-    </section>
+      </Box>
+    </Box>
   )
 }

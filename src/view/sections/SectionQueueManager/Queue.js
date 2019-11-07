@@ -3,6 +3,8 @@ import { getYear, format, isToday, formatDistance } from 'date-fns'
 import { type } from 'ramda'
 import Highlight from 'react-highlight/lib/optimized'
 
+import { Box } from 'grommet'
+
 const today = new Date()
 
 function formatDate(ts) {
@@ -285,9 +287,9 @@ export default function Queue({
   selectedStatus,
 }) {
   return (
-    <section>
+    <Box >
       <h3>{queue.name}</h3>
-      <div className="menu-list">
+      <Box direction={'row'} gap={'medium'}>
         {statuses.map(status => (
           <MenuItem
             key={`${queue.name}-${status}`}
@@ -297,7 +299,7 @@ export default function Queue({
             selected={selectedStatus === status}
           />
         ))}
-      </div>
+      </Box>
       {selectedStatus && (
         <>
           <QueueActions
@@ -309,6 +311,6 @@ export default function Queue({
           <Jobs retryJob={retryJob} queue={queue} status={selectedStatus} />
         </>
       )}
-    </section>
+    </Box>
   )
 }
