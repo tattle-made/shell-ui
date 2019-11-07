@@ -30,7 +30,7 @@ function App() {
             </Switch>
             <Route path='/' component={FooterSite} />
             <Switch>
-              <PrivateRoute exact path='/queue' component={Queue} />
+              <PrivateRoute exact path='/queue' component={SideNav} />
             </Switch>
             <Switch>
               <PrivateRoute exact path='/search' component={SideNav} />

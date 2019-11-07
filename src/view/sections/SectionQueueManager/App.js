@@ -18,7 +18,6 @@ export default function App({ basePath }) {
 
   return (
     <Grommet theme={TattleTheme} full>
-      <Header />
       <main>
         {state.loading ? (
           'Loading...'
