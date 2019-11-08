@@ -3,7 +3,7 @@ import Queue from './Queue'
 import RedisStats from './RedisStats'
 import Header from './Header'
 import useStore from './hooks/useStore'
-import { Grommet } from 'grommet'
+import { Grommet, Box } from 'grommet'
 import TattleTheme from './theme'
 
 export default function App({ basePath }) {
@@ -18,7 +18,7 @@ export default function App({ basePath }) {
 
   return (
     <Grommet theme={TattleTheme} full>
-      <main>
+      <Box pad={'medium'}>
         {state.loading ? (
           'Loading...'
         ) : (
@@ -37,7 +37,7 @@ export default function App({ basePath }) {
             ))}
           </>
         )}
-      </main>
+      </Box>
     </Grommet>
   )
 }

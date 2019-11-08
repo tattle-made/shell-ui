@@ -156,7 +156,7 @@ const SectionSearchWhatsappPosts = () => {
         gap={'medium'}
      >
 
-         <Heading level={3}>{test} </Heading>
+         {/* <Heading level={3}>{test} </Heading> */}
 
          <MultiModalInput onSubmit={onSubmit}/>
          
