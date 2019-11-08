@@ -6,7 +6,7 @@ import useStore from './hooks/useStore'
 import { Grommet, Box } from 'grommet'
 import TattleTheme from './theme'
 
-export default function App({ basePath }) {
+export default function Section({ basePath }) {
   const {
     state,
     selectedStatuses,
