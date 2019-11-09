@@ -23,7 +23,7 @@ import UserUpdate from '../pages/UserUpdate';
 import PostsTableItem from './PostData';
 import MenuItem from '../atomic-components/MenuItem';
 
-import { Grommet, Box, Image, Heading} from 'grommet'
+import { Grommet, Box, Button, Image, Heading} from 'grommet'
 import { Layout, Atoms} from '@tattle-made/ui';
 
 //action
@@ -32,6 +32,7 @@ import { logoutUser } from '../../redux/actions/auth';
 // access control
 import AccessControl from './AccessControl';
 import Queue from '../pages/Queue';
+import { LogOut } from 'react-feather';
 
 const {AppShell, LayoutPortal} = Layout;
 const {Status} = Atoms;
@@ -93,7 +94,7 @@ class SideNav extends Component {
               <div className='links' onClick={e => this.onMenuItemClick(e)}>
                 <MenuItem
                   route={'/posts'}
-                  icon={eval(faCloud)}
+                  icon={'post'}
                   label={'Posts'}
                   className={classnames({
                     active:
@@ -103,7 +104,7 @@ class SideNav extends Component {
                 />
                 <MenuItem
                   route={'/search'}
-                  icon={eval(faSearch)}
+                  icon={'search'}
                   label={'Search'}
                   className={classnames({
                     active: this.props.location.pathname.includes('/search')
@@ -111,7 +112,7 @@ class SideNav extends Component {
                 />
                 <MenuItem
                   route={'/queue'}
-                  icon={eval(faMicrochip)}
+                  icon={'queue'}
                   label={'Queues'}
                   className={classnames({
                     active: this.props.location.pathname.includes('/queue')
@@ -124,7 +125,7 @@ class SideNav extends Component {
                 >
                   <MenuItem
                     route={'/users'}
-                    icon={eval(faUsers)}
+                    icon={'user'}
                     label={'Users'}
                     className={classnames({
                       active: this.props.location.pathname.includes('/users')
@@ -132,12 +133,13 @@ class SideNav extends Component {
                   />
                 </AccessControl>
               </div>
-              <div
+
+              <Button
+                plain
                 onClick={e => this.onUserOptionClick(e)}
-                className='user-options'
               >
-                <FontAwesomeIcon icon={faSignOutAlt} size='lg' />
-              </div>
+                <LogOut />
+              </Button>
 
             </Box>
           }
