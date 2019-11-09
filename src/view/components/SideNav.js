@@ -23,12 +23,18 @@ import UserUpdate from '../pages/UserUpdate';
 import PostsTableItem from './PostData';
 import MenuItem from '../atomic-components/MenuItem';
 
+import { Grommet, Box, Image, Heading} from 'grommet'
+import { Layout, Atoms} from '@tattle-made/ui';
+
 //action
 import { logoutUser } from '../../redux/actions/auth';
 
 // access control
 import AccessControl from './AccessControl';
 import Queue from '../pages/Queue';
+
+const {AppShell, LayoutPortal} = Layout;
+const {Status} = Atoms;
 
 class SideNav extends Component {
   constructor(props) {
@@ -78,22 +84,12 @@ class SideNav extends Component {
 
   render() {
     return (
-      <div
-        className={classnames('main', {
-          'sidenav-open': this.state.open,
-          'sidenav-close': !this.state.open
-        })}
-      >
-        <div className='content-container'>
-          <div className='sidenav-container' onClick={() => this.toggle()}>
-            <div>
-              <div className='app-logo-container'>
-                <img className='logo' src={tattle_monogram_dark} alt='logo' />
-                <h1>Tattle</h1>
-                <span className='sideNav-cross'>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
-              </div>
+      <AppShell full>
+        <LayoutPortal
+          primaryNavigationContent={
+            <Box pad={'small'} gap={'small'}>
+              <Heading level={3}> Tattle </Heading>
+
               <div className='links' onClick={e => this.onMenuItemClick(e)}>
                 <MenuItem
                   route={'/posts'}
@@ -142,14 +138,21 @@ class SideNav extends Component {
               >
                 <FontAwesomeIcon icon={faSignOutAlt} size='lg' />
               </div>
-            </div>
-          </div>
 
-          <div className='main-content-container'>
-            {this.mainContent(this.props.location.pathname)}
-          </div>
-        </div>
-      </div>
+            </Box>
+          }
+          mainSectionContent={
+            this.mainContent(this.props.location.pathname)
+          }
+        >
+        </LayoutPortal>
+
+        <Status
+          type={'ok'}
+          visibility={true}
+          message={'Error fetching resources'}
+        />
+      </AppShell>
     );
   }
 }

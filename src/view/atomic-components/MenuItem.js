@@ -3,15 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import {Box, Heading, Text} from 'grommet'
+
 const MenuItem = props => {
   return (
     <Link to={props.route}>
-      <div className={`label-icon-container ${props.className}`}>
-        <span className='icon'>
-          <FontAwesomeIcon icon={props.icon} color='#000637' />
-        </span>
-        <h2>{props.label}</h2>
-      </div>
+      <Box direction={'row'} gap={'small'}>
+        {/* <FontAwesomeIcon icon={props.icon} color='#000637' /> */}
+        <Heading level={2}> {props.label} </Heading>
+      </Box>
     </Link>
   );
 };
