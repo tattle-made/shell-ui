@@ -88,7 +88,7 @@ class SideNav extends Component {
       <AppShell full>
         <LayoutPortal
           primaryNavigationContent={
-            <Box pad={'small'} gap={'small'}>
+            <Box pad={'medium'} >
               <Heading level={3}> Tattle </Heading>
 
               <div className='links' onClick={e => this.onMenuItemClick(e)}>
