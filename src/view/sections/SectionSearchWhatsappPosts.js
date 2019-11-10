@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Box, Heading} from 'grommet'
+import {Box, Heading, Button} from 'grommet'
 import { Search } from 'react-feather';
 
 import { useDispatch, useSelector} from 'react-redux';
@@ -13,7 +13,12 @@ import {Atoms, Molecules} from '@tattle-made/ui'
 import MoleculeDuplicatePost from '../molecules/MoleculeDuplicatePost';
 
 import * as Axios from 'axios';
-import { setAppStatusLoading } from '../../redux/actions/section-status';
+import {
+    setAppStatusLoading,
+    setAppStatusMessage,
+    setAppStatusError,
+    resetAppStatus
+} from '../../redux/actions/section-status';
 
 const {ExternalLink, MediaBlock, MultiModalInput} = Atoms;
 const {MultipleLinks} = ExternalLink;
@@ -168,9 +173,12 @@ const SectionSearchWhatsappPosts = () => {
 
          <MultiModalInput onSubmit={() => {
             console.log('hi');
-            dispatch(setAppStatusLoading('Fetching Users'))
+            dispatch(setAppStatusError('Fetching Users'))
          }}/>
-         
+
+         <Button onClick={() => {
+            console.log('reset')
+            dispatch(resetAppStatus())}} />
          
          <MoleculeSearchFilterOptions
             onSave={(options) => setOptions(options)}/>

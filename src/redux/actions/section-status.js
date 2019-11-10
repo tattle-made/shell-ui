@@ -1,4 +1,5 @@
 const generateData = (type, message) => ({
+    visible: true,
     type,
     message
 })
@@ -7,11 +8,13 @@ const generateData = (type, message) => ({
 const SET_APP_STATUS_LOADING = 'SET_APP_STATUS_LOADING';
 const SET_APP_STATUS_MESSAGE = 'SET_APP_STATUS_MESSAGE';
 const SET_APP_STATUS_ERROR = 'SET_APP_STATUS_ERROR';
+const RESET_APP_STATUS = 'RESET_APP_STATUS';
 
 export const types = {
     SET_APP_STATUS_LOADING,
     SET_APP_STATUS_MESSAGE,
-    SET_APP_STATUS_ERROR
+    SET_APP_STATUS_ERROR,
+    RESET_APP_STATUS
 }
 
 // define actions
@@ -28,4 +31,11 @@ export const setAppStatusMessage = (msg) => ({
 export const setAppStatusError = (msg) => ({
     type: SET_APP_STATUS_ERROR,
     data: generateData('error', msg)
+})
+
+export const resetAppStatus = () => ({
+    type: RESET_APP_STATUS,
+    data : {
+        visible : false
+    }
 })

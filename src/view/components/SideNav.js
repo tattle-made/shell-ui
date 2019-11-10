@@ -32,18 +32,15 @@ import { logoutUser } from '../../redux/actions/auth';
 import AccessControl from './AccessControl';
 import Queue from '../pages/Queue';
 import { LogOut } from 'react-feather';
+import { useSelector } from 'react-redux';
 
 const {AppShell, LayoutPortal} = Layout;
 const {Status} = Atoms;
 
 const SideNav = ({location}) => {
-  
-  const toggle = (e) => {
-    this.setState({
-      open: !this.state.open
-    });
-  }
 
+  const sectionStatus = useSelector(state => state.sectionStatus)
+  
   const onMenuItemClick = (e) => {
     e.stopPropagation();
   }
@@ -143,9 +140,9 @@ const SideNav = ({location}) => {
       </LayoutPortal>
 
       <Status
-        type={'ok'}
-        visibility={true}
-        message={'Fetching users from your team'}
+        type={sectionStatus.type}
+        visibility={sectionStatus.visible}
+        message={sectionStatus.message}
       />
     </AppShell>
   );
