@@ -7,6 +7,7 @@ import auth from './auth';
 import posts from './posts';
 import upload from './upload';
 import search from './search';
+import sectionStatus from './section-status'
 
 export default combineReducers({
   error,
@@ -18,5 +19,6 @@ export default combineReducers({
   posts,
   search,
   auth,
-  upload
+  upload,
+  sectionStatus
 });

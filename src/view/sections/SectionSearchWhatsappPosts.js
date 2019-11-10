@@ -13,13 +13,12 @@ import {Atoms, Molecules} from '@tattle-made/ui'
 import MoleculeDuplicatePost from '../molecules/MoleculeDuplicatePost';
 
 import * as Axios from 'axios';
+import { setAppStatusLoading } from '../../redux/actions/section-status';
 
 const {ExternalLink, MediaBlock, MultiModalInput} = Atoms;
 const {MultipleLinks} = ExternalLink;
 const {MultipleWithClickMoreButton, SinglePost} = MediaBlock;
 const {MoleculeSearchInputForm} = Molecules;
-
-
 
 const alsoSeenOnData = {
    loading : false, // true or false,
@@ -102,6 +101,8 @@ const SectionSearchWhatsappPosts = () => {
    const [duplicateResult, setDuplicateResult] = useState({status: 'default'})
    const [semanticallySimilarResult, setSemanticallySimilarResult] = useState({status : 'default'})
 
+   const dispatch = useDispatch();
+
    const test = useSelector( state => state.loginUser.username);
 
    useEffect(()=> {
@@ -114,40 +115,45 @@ const SectionSearchWhatsappPosts = () => {
 
    const onSubmit = ((payload) => {
       console.log('searched : ', payload);
-      if(payload.mode == 'url'){
-         setDuplicateResult({status:'loading'})
-         post(
-            '/search/duplicate',
-            {
-               url: payload.data.query,
-               threshold: 0.6
-            },
-            '822bc900-0051-11ea-9ede-87c6fdd1a116'
-         )
-         .then((data) => {
-            console.log(' API RESPONSE FOR DUPLICATE ===='); 
-            console.log(data);
-            return data;
-         })
-         .then((data) => setDuplicateResult({...data, status:'data'}))
-         .catch((err) => console.log(err));
-      } else if(payload.mode == 'text'){
-         setDuplicateResult({status:'loading'})
-         post(
-            '/search/tag',
-            {
-               tag: payload.data.query,
-            },
-            '822bc900-0051-11ea-9ede-87c6fdd1a116'
-         )
-         .then((data) => {
-            console.log(' API RESPONSE FOR TAG ===='); 
-            console.log(data);
-            return data;
-         })
-         .then((data) => setSemanticallySimilarResult({...data, status:'data'}))
-         .catch((err) => console.log(err));
-      }
+      // dispatch search action
+      // while searching, dispatch set_app_State action
+      // if success, dispatch set_section_search data
+      // if fail dispatch set_app_State action with error info
+
+      // if(payload.mode == 'url'){
+      //    setDuplicateResult({status:'loading'})
+      //    post(
+      //       '/search/duplicate',
+      //       {
+      //          url: payload.data.query,
+      //          threshold: 0.6
+      //       },
+      //       '822bc900-0051-11ea-9ede-87c6fdd1a116'
+      //    )
+      //    .then((data) => {
+      //       console.log(' API RESPONSE FOR DUPLICATE ===='); 
+      //       console.log(data);
+      //       return data;
+      //    })
+      //    .then((data) => setDuplicateResult({...data, status:'data'}))
+      //    .catch((err) => console.log(err));
+      // } else if(payload.mode == 'text'){
+      //    setDuplicateResult({status:'loading'})
+      //    post(
+      //       '/search/tag',
+      //       {
+      //          tag: payload.data.query,
+      //       },
+      //       '822bc900-0051-11ea-9ede-87c6fdd1a116'
+      //    )
+      //    .then((data) => {
+      //       console.log(' API RESPONSE FOR TAG ===='); 
+      //       console.log(data);
+      //       return data;
+      //    })
+      //    .then((data) => setSemanticallySimilarResult({...data, status:'data'}))
+      //    .catch((err) => console.log(err));
+      // }
    })
 
  return (
@@ -158,7 +164,13 @@ const SectionSearchWhatsappPosts = () => {
 
          {/* <Heading level={3}>{test} </Heading> */}
 
-         <MultiModalInput onSubmit={onSubmit}/>
+         {/* <MultiModalInput onSubmit={onSubmit}/> */}
+
+         <MultiModalInput onSubmit={() => {
+            console.log('hi');
+            dispatch(setAppStatusLoading('Fetching Users'))
+         }}/>
+         
          
          <MoleculeSearchFilterOptions
             onSave={(options) => setOptions(options)}/>
