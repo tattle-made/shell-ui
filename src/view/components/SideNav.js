@@ -10,7 +10,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 import tattle_monogram_dark from '../../assets/img/tattle_monogram_dark.png';
 import PropTypes from 'prop-types';
 
@@ -37,31 +36,24 @@ import { LogOut } from 'react-feather';
 const {AppShell, LayoutPortal} = Layout;
 const {Status} = Atoms;
 
-class SideNav extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false
-    };
-    this.onUserOptionClick = this.onUserOptionClick.bind(this);
-  }
-
-  toggle(e) {
+const SideNav = ({location}) => {
+  
+  const toggle = (e) => {
     this.setState({
       open: !this.state.open
     });
   }
 
-  onMenuItemClick(e) {
+  const onMenuItemClick = (e) => {
     e.stopPropagation();
   }
 
-  onUserOptionClick(e) {
-    this.props.logoutUser();
+  const onUserOptionClick = (e) => {
+    //this.props.logoutUser();
     e.stopPropagation();
   }
 
-  mainContent(route) {
+  const mainContent = (route) => {
     if (route === '/posts' || route.includes('/posts/')) {
       return <PostsTable />;
     } else if (route === '/search') {
@@ -83,82 +75,81 @@ class SideNav extends Component {
     }
   }
 
-  render() {
-    return (
-      <AppShell>
-        <LayoutPortal
-          primaryNavigationContent={
-            <Box pad={'medium'} >
-              <Box margin={{bottom: 'medium'}}>
-                <Heading level={3}> Tattle </Heading>
-              </Box>
-
-              <div className='links' onClick={e => this.onMenuItemClick(e)}>
-                <MenuItem
-                  route={'/posts'}
-                  icon={'post'}
-                  label={'Posts'}
-                  className={classnames({
-                    active:
-                      this.props.location.pathname.includes('/posts') ||
-                      this.props.location.pathname.includes('/post')
-                  })}
-                />
-                <MenuItem
-                  route={'/search'}
-                  icon={'search'}
-                  label={'Search'}
-                  className={classnames({
-                    active: this.props.location.pathname.includes('/search')
-                  })}
-                />
-                <MenuItem
-                  route={'/queue'}
-                  icon={'queue'}
-                  label={'Queues'}
-                  className={classnames({
-                    active: this.props.location.pathname.includes('/queue')
-                  })}
-                />
-                <AccessControl
-                  allowedPermissions={['user:canView']}
-                  text={() => this.dothis()}
-                  renderNoAccess={() => {}}
-                >
-                  <MenuItem
-                    route={'/users'}
-                    icon={'user'}
-                    label={'Users'}
-                    className={classnames({
-                      active: this.props.location.pathname.includes('/users')
-                    })}
-                  />
-                </AccessControl>
-              </div>
-
-              <Button
-                plain
-                onClick={e => this.onUserOptionClick(e)}
-              >
-                <LogOut />
-              </Button>
-
+  return (
+    <AppShell>
+      <LayoutPortal
+        primaryNavigationContent={
+          <Box pad={'medium'} >
+            <Box margin={{bottom: 'medium'}}>
+              <Heading level={3}> Tattle </Heading>
             </Box>
-          }
-          mainSectionContent={
-            this.mainContent(this.props.location.pathname)
-          }
-        >
-        </LayoutPortal>
 
-        <Status
-          type={'ok'}
-          visibility={true}
-          message={'Fetching users from your team'}
-        />
-      </AppShell>
-    );
-  }
+            <div className='links' onClick={e => this.onMenuItemClick(e)}>
+              <MenuItem
+                route={'/posts'}
+                icon={'post'}
+                label={'Posts'}
+                className={classnames({
+                  active:
+                    location.pathname.includes('/posts') ||
+                    location.pathname.includes('/post')
+                })}
+              />
+              <MenuItem
+                route={'/search'}
+                icon={'search'}
+                label={'Search'}
+                className={classnames({
+                  active: location.pathname.includes('/search')
+                })}
+              />
+              <MenuItem
+                route={'/queue'}
+                icon={'queue'}
+                label={'Queues'}
+                className={classnames({
+                  active: location.pathname.includes('/queue')
+                })}
+              />
+              <AccessControl
+                allowedPermissions={['user:canView']}
+                text={() => this.dothis()}
+                renderNoAccess={() => {}}
+              >
+                <MenuItem
+                  route={'/users'}
+                  icon={'user'}
+                  label={'Users'}
+                  className={classnames({
+                    active: location.pathname.includes('/users')
+                  })}
+                />
+              </AccessControl>
+            </div>
+
+            <Button
+              plain
+              onClick={e => this.onUserOptionClick(e)}
+            >
+              <LogOut />
+            </Button>
+
+          </Box>
+        }
+        mainSectionContent={
+          mainContent(location.pathname)
+        }
+      >
+      </LayoutPortal>
+
+      <Status
+        type={'ok'}
+        visibility={true}
+        message={'Fetching users from your team'}
+      />
+    </AppShell>
+  );
+  
 }
 
 SideNav.propTypes = {
@@ -166,11 +157,5 @@ SideNav.propTypes = {
   location: PropTypes.object.isRequired
 };
 
-const SideNavBar = withRouter(
-  connect(
-    null,
-    { logoutUser }
-  )(SideNav)
-);
 
-export default SideNavBar;
+export default SideNav;
