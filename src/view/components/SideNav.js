@@ -85,11 +85,13 @@ class SideNav extends Component {
 
   render() {
     return (
-      <AppShell full>
+      <AppShell>
         <LayoutPortal
           primaryNavigationContent={
             <Box pad={'medium'} >
-              <Heading level={3}> Tattle </Heading>
+              <Box margin={{bottom: 'medium'}}>
+                <Heading level={3}> Tattle </Heading>
+              </Box>
 
               <div className='links' onClick={e => this.onMenuItemClick(e)}>
                 <MenuItem
@@ -152,7 +154,7 @@ class SideNav extends Component {
         <Status
           type={'ok'}
           visibility={true}
-          message={'Error fetching resources'}
+          message={'Fetching users from your team'}
         />
       </AppShell>
     );
