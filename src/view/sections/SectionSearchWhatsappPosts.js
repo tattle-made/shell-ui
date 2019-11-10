@@ -19,11 +19,15 @@ import {
     setAppStatusError,
     resetAppStatus
 } from '../../redux/actions/section-status';
+import { Duplicate, FactCheckedStories } from '../../redux/actions/section-search';
 
 const {ExternalLink, MediaBlock, MultiModalInput} = Atoms;
 const {MultipleLinks} = ExternalLink;
 const {MultipleWithClickMoreButton, SinglePost} = MediaBlock;
 const {MoleculeSearchInputForm} = Molecules;
+
+const { findDuplicateImages } = Duplicate;
+const { findSimilarFactCheckedStories } = FactCheckedStories;
 
 const alsoSeenOnData = {
    loading : false, // true or false,
@@ -120,6 +124,9 @@ const SectionSearchWhatsappPosts = () => {
 
    const onSubmit = ((payload) => {
       console.log('searched : ', payload);
+      //dispatch(findDuplicateImages());
+      dispatch(findSimilarFactCheckedStories())
+      
       // dispatch search action
       // while searching, dispatch set_app_State action
       // if success, dispatch set_section_search data
@@ -171,14 +178,7 @@ const SectionSearchWhatsappPosts = () => {
 
          {/* <MultiModalInput onSubmit={onSubmit}/> */}
 
-         <MultiModalInput onSubmit={() => {
-            console.log('hi');
-            dispatch(setAppStatusError('Fetching Users'))
-         }}/>
-
-         <Button onClick={() => {
-            console.log('reset')
-            dispatch(resetAppStatus())}} />
+         <MultiModalInput onSubmit={onSubmit}/>
          
          <MoleculeSearchFilterOptions
             onSave={(options) => setOptions(options)}/>

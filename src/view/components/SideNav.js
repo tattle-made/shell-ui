@@ -124,12 +124,14 @@ const SideNav = ({location}) => {
               </AccessControl>
             </div>
 
-            <Button
-              plain
-              onClick={e => this.onUserOptionClick(e)}
-            >
-              <LogOut />
-            </Button>
+            <Box margin={{top: 'large'}}>
+              <Button
+                plain
+                onClick={e => this.onUserOptionClick(e)}
+              >
+                <LogOut />
+              </Button>
+            </Box>
 
           </Box>
         }

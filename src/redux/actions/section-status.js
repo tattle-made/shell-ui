@@ -10,13 +10,6 @@ const SET_APP_STATUS_MESSAGE = 'SET_APP_STATUS_MESSAGE';
 const SET_APP_STATUS_ERROR = 'SET_APP_STATUS_ERROR';
 const RESET_APP_STATUS = 'RESET_APP_STATUS';
 
-export const types = {
-    SET_APP_STATUS_LOADING,
-    SET_APP_STATUS_MESSAGE,
-    SET_APP_STATUS_ERROR,
-    RESET_APP_STATUS
-}
-
 // define actions
 export const setAppStatusLoading = (msg) => ({
     type: SET_APP_STATUS_LOADING,
@@ -39,3 +32,9 @@ export const resetAppStatus = () => ({
         visible : false
     }
 })
+export const types = {
+    SET_APP_STATUS_LOADING,
+    SET_APP_STATUS_MESSAGE,
+    SET_APP_STATUS_ERROR,
+    RESET_APP_STATUS
+}
