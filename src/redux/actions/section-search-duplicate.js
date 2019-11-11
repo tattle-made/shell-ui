@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { setAppStatusLoading, setAppStatusMessage, setAppStatusError } from '../section-status';
+import { setAppStatusLoading, setAppStatusMessage, setAppStatusError } from './section-status';
 import Promise from 'bluebird';
 
 // define action types

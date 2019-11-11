@@ -20,6 +20,9 @@ import {
     resetAppStatus
 } from '../../redux/actions/section-status';
 import { Duplicate, FactCheckedStories } from '../../redux/actions/section-search';
+import {
+    findSimilarFactCheckedStories
+} from '../../redux/actions/section-search-fact-checked-stories';
 
 const {ExternalLink, MediaBlock, MultiModalInput} = Atoms;
 const {MultipleLinks} = ExternalLink;
@@ -27,7 +30,6 @@ const {MultipleWithClickMoreButton, SinglePost} = MediaBlock;
 const {MoleculeSearchInputForm, MoleculeSinglePost, MoleculeMultiplePosts} = Molecules;
 
 const { findDuplicateImages } = Duplicate;
-const { findSimilarFactCheckedStories } = FactCheckedStories;
 
 const alsoSeenOnData = {
    loading : false, // true or false,
@@ -125,7 +127,8 @@ const SectionSearchWhatsappPosts = () => {
    const dispatch = useDispatch();
 
    const test = useSelector( state => state.loginUser.username);
-   let sectionSearchDuplicate = useSelector( state => state.sectionSearchDuplicate)
+   const sectionSearchDuplicate = useSelector( state => state.sectionSearchDuplicate)
+   const factCheckedStoriesData = useSelector( state => state.sectionSearchFactCheckedStories)
 
    useEffect(()=> {
       setFetching(true)
@@ -137,8 +140,9 @@ const SectionSearchWhatsappPosts = () => {
 
    const onSubmit = ((payload) => {
       console.log('searched : ', payload);
-      dispatch(findDuplicateImages());
-      //dispatch(findSimilarFactCheckedStories())
+      // dispatch(findDuplicateImages());
+
+      dispatch(findSimilarFactCheckedStories())
       
       // dispatch search action
       // while searching, dispatch set_app_State action
@@ -201,15 +205,16 @@ const SectionSearchWhatsappPosts = () => {
             data={sectionSearchDuplicate}
          />
 
-         <MoleculeMultiplePosts
-            title={'Semantically Similar Posts'}
-            data={multipleMediaBlockDefaultData}
-        />
-
          <MultipleLinks
             title={'Also seen on'}
-            data={ moleculeUrlDefaultData }
+            data={ factCheckedStoriesData }
         />
+
+         {/* <MoleculeMultiplePosts
+            title={'Semantically Similar Posts'}
+            data={multipleMediaBlockDefaultData}
+        /> */}
+
 
          {/* <MultipleLinks
             visible={options.stories}

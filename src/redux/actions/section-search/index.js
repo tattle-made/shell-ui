@@ -1,4 +1,4 @@
-import * as Duplicate from './duplicate'
+import * as Duplicate from '../section-search-duplicate'
 import * as FactCheckedStories from './fact-checked-stories'
 
 export {
