@@ -81,7 +81,7 @@ const SideNav = ({location}) => {
               <Heading level={3}> Tattle </Heading>
             </Box>
 
-            <div className='links' onClick={e => this.onMenuItemClick(e)}>
+            <div className='links' onClick={e => onMenuItemClick(e)}>
               <MenuItem
                 route={'/posts'}
                 icon={'post'}

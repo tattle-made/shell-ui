@@ -24,7 +24,7 @@ import { Duplicate, FactCheckedStories } from '../../redux/actions/section-searc
 const {ExternalLink, MediaBlock, MultiModalInput} = Atoms;
 const {MultipleLinks} = ExternalLink;
 const {MultipleWithClickMoreButton, SinglePost} = MediaBlock;
-const {MoleculeSearchInputForm} = Molecules;
+const {MoleculeSearchInputForm, MoleculeSinglePost, MoleculeMultiplePosts} = Molecules;
 
 const { findDuplicateImages } = Duplicate;
 const { findSimilarFactCheckedStories } = FactCheckedStories;
@@ -92,6 +92,18 @@ const SemanticallySimilarData = {
       }
   ]
 };
+
+const sectionDataDefault={
+   status: 'default',
+}
+
+const multipleMediaBlockDefaultData = {
+   status:'default'
+}
+
+const moleculeUrlDefaultData = {
+   status: 'default',
+}
 
 /**
 * @author denny
@@ -177,13 +189,27 @@ const SectionSearchWhatsappPosts = () => {
          {/* <Heading level={3}>{test} </Heading> */}
 
          {/* <MultiModalInput onSubmit={onSubmit}/> */}
-
          <MultiModalInput onSubmit={onSubmit}/>
          
          <MoleculeSearchFilterOptions
             onSave={(options) => setOptions(options)}/>
 
+         <MoleculeSinglePost
+            title={'Duplicate Post'}
+            data={sectionDataDefault}
+         />
+
+         <MoleculeMultiplePosts
+            title={'Semantically Similar Posts'}
+            data={multipleMediaBlockDefaultData}
+        />
+
          <MultipleLinks
+            title={'Also seen on'}
+            data={ moleculeUrlDefaultData }
+        />
+
+         {/* <MultipleLinks
             visible={options.stories}
             title={"Also Seen on"}
             loading={alsoSeenOnData.loading}
@@ -205,7 +231,7 @@ const SectionSearchWhatsappPosts = () => {
             visible={true}
             label={'Semantically Similar Matches'}
             data={SemanticallySimilarData}
-         />
+         /> */}
 
    </Box>
 )
