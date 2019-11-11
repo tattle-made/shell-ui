@@ -8,6 +8,7 @@ import posts from './posts';
 import upload from './upload';
 import search from './search';
 import sectionStatus from './section-status'
+import sectionSearchDuplicate from './section-search-duplicate'
 
 export default combineReducers({
   error,
@@ -20,5 +21,6 @@ export default combineReducers({
   search,
   auth,
   upload,
-  sectionStatus
+  sectionStatus,
+  sectionSearchDuplicate
 });

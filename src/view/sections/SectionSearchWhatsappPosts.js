@@ -119,12 +119,13 @@ const SectionSearchWhatsappPosts = () => {
 
    const [fetching, setFetching] = useState(false)
    const [options, setOptions] = useState(defaultOptions)
-   const [duplicateResult, setDuplicateResult] = useState({status: 'default'})
+   
    const [semanticallySimilarResult, setSemanticallySimilarResult] = useState({status : 'default'})
 
    const dispatch = useDispatch();
 
    const test = useSelector( state => state.loginUser.username);
+   let sectionSearchDuplicate = useSelector( state => state.sectionSearchDuplicate)
 
    useEffect(()=> {
       setFetching(true)
@@ -136,8 +137,8 @@ const SectionSearchWhatsappPosts = () => {
 
    const onSubmit = ((payload) => {
       console.log('searched : ', payload);
-      //dispatch(findDuplicateImages());
-      dispatch(findSimilarFactCheckedStories())
+      dispatch(findDuplicateImages());
+      //dispatch(findSimilarFactCheckedStories())
       
       // dispatch search action
       // while searching, dispatch set_app_State action
@@ -195,8 +196,9 @@ const SectionSearchWhatsappPosts = () => {
             onSave={(options) => setOptions(options)}/>
 
          <MoleculeSinglePost
-            title={'Duplicate Post'}
-            data={sectionDataDefault}
+            visible={true}
+            title={'Duplicate Posts'}
+            data={sectionSearchDuplicate}
          />
 
          <MoleculeMultiplePosts
