@@ -28,7 +28,7 @@ const column = (extraData, history) => {
     {
       dataField: "tags",
       text: "Tags",
-      filter: textFilter(),
+      // filter: textFilter(),
       headerAlign: "center"
     },
     {
