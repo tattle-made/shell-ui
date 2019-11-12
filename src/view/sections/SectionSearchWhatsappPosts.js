@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Box, Heading, Button} from 'grommet'
+import { Grid,    Box, Heading, Button} from 'grommet'
 import { Search } from 'react-feather';
 
 import { useDispatch, useSelector} from 'react-redux';
@@ -140,9 +140,11 @@ const SectionSearchWhatsappPosts = () => {
 
    const onSubmit = ((payload) => {
       console.log('searched : ', payload);
-      // dispatch(findDuplicateImages());
-
+      
+      dispatch(findDuplicateImages());
       dispatch(findSimilarFactCheckedStories())
+
+      // dispatch( setAppStatusError('Trying to connect to network') )
       
       // dispatch search action
       // while searching, dispatch set_app_State action
@@ -196,19 +198,32 @@ const SectionSearchWhatsappPosts = () => {
          {/* <MultiModalInput onSubmit={onSubmit}/> */}
          <MultiModalInput onSubmit={onSubmit}/>
          
-         <MoleculeSearchFilterOptions
-            onSave={(options) => setOptions(options)}/>
+         {/* <MoleculeSearchFilterOptions
+            onSave={(options) => setOptions(options)}/> */}
 
-         <MoleculeSinglePost
-            visible={true}
-            title={'Duplicate Posts'}
-            data={sectionSearchDuplicate}
-         />
+         <Grid
+            rows={['flex']}
+            columns={['1/2', '1/2']}
+            areas={[
+               {name: 'one', start:[0,0], end:[0,0]},
+               {name: 'two', start:[1,0], end:[1,0]}
+            ]}
+         >
+            <Box gridArea={'one'} >
+               <MoleculeSinglePost
+                  visible={true}
+                  title={'Duplicate Posts'}
+                  data={sectionSearchDuplicate}
+               />
+            </Box>
 
-         <MultipleLinks
-            title={'Also seen on'}
-            data={ factCheckedStoriesData }
-        />
+            <Box gridArea={'two'}>
+               <MultipleLinks
+                  title={'Also seen on'}
+                  data={ factCheckedStoriesData }
+               />
+            </Box>
+         </Grid>
 
          {/* <MoleculeMultiplePosts
             title={'Semantically Similar Posts'}

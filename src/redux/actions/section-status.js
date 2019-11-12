@@ -1,6 +1,6 @@
-const generateData = (type, message) => ({
+const generateData = (status, message) => ({
     visible: true,
-    type,
+    status,
     message
 })
 

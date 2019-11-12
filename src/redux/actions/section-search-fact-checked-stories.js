@@ -11,7 +11,7 @@ const SET_SIMILAR_FACT_CHECKED_STORIES_DATA = 'SET_SIMILAR_FACT_CHECKED_STORIES_
 export const findSimilarFactCheckedStories = () => (
     (dispatch) => {
         dispatch(setLoading())
-        Promise.delay(5000).then(()=>{
+        Promise.delay(1500).then(()=>{
             dispatch(setData({
                 status:'data',
                 urls : [

@@ -35,11 +35,14 @@ import { LogOut } from 'react-feather';
 import { useSelector } from 'react-redux';
 
 const {AppShell, LayoutPortal} = Layout;
-const {Status} = Atoms;
+const { Status } = Atoms;
 
 const SideNav = ({location}) => {
 
   const sectionStatus = useSelector(state => state.sectionStatus)
+
+  console.log('===')
+  console.log(sectionStatus);
   
   const onMenuItemClick = (e) => {
     e.stopPropagation();
@@ -142,8 +145,7 @@ const SideNav = ({location}) => {
       </LayoutPortal>
 
       <Status
-        type={sectionStatus.type}
-        visibility={sectionStatus.visible}
+        type={sectionStatus.status}
         message={sectionStatus.message}
       />
     </AppShell>

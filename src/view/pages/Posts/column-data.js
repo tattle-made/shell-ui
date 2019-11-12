@@ -1,11 +1,11 @@
 import { textFilter } from "react-bootstrap-table2-filter";
-import { actionIconsFormatter, previewFormatter } from "./column-formatter";
+import { actionIconsFormatter, previewFormatter, timestampFormatter } from "./column-formatter";
 
 const column = (extraData, history) => {
   return [
     {
-      dataField: "user_id",
-      text: "User Id"
+      dataField: "user.username",
+      text: "User Name"
     },
     {
       dataField: "filename",
@@ -18,6 +18,12 @@ const column = (extraData, history) => {
           history.push(url);
         }
       }
+    },
+    {
+      dataField: "createdAt",
+      text: "Added on",
+      headerAlign: "center",
+      formatter: timestampFormatter,
     },
     {
       dataField: "tags",

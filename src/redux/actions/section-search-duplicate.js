@@ -13,7 +13,7 @@ const SET_SEARCH_DUPLICATE_STATUS_DATA = 'SET_SEARCH_DUPLICATE_STATUS_DATA'
 export const findDuplicateImages = () => (
     (dispatch) => {
         dispatch(setLoading())
-        Promise.delay(2500).then(()=>{
+        Promise.delay(2000).then(()=>{
             //return Promise.reject('Error finding duplicate')
             dispatch(setData({
                 status: 'data',
