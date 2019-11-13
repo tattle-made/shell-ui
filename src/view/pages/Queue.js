@@ -17,7 +17,7 @@ const Queue = () => {
 
     return (
         <Container>
-            <SectionQueue basePath={'ui'}/>
+            <SectionQueue basePath={'ui/test'}/>
         </Container>
     )
 }
