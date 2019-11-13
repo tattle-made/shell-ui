@@ -141,8 +141,8 @@ const SectionSearchWhatsappPosts = () => {
    const onSubmit = ((payload) => {
       console.log('searched : ', payload);
       
-      dispatch(findDuplicateImages());
-      dispatch(findSimilarFactCheckedStories())
+      dispatch(findDuplicateImages(payload));
+      // dispatch(findSimilarFactCheckedStories())
 
       // dispatch( setAppStatusError('Trying to connect to network') )
       
@@ -195,11 +195,18 @@ const SectionSearchWhatsappPosts = () => {
 
          {/* <Heading level={3}>{test} </Heading> */}
 
-         {/* <MultiModalInput onSubmit={onSubmit}/> */}
-         <MultiModalInput onSubmit={onSubmit}/>
-         
-         {/* <MoleculeSearchFilterOptions
-            onSave={(options) => setOptions(options)}/> */}
+         <MultiModalInput 
+            onSubmit={onSubmit}
+            s3AuthConf={
+                  {
+                     url: 'http://localhost:3003/api/s3-auth',
+                     token: '0f4fe090-0643-11ea-bc52-1387edf2f78a'
+                  }
+            }
+         />
+
+         <MoleculeSearchFilterOptions
+            onSave={(options) => setOptions(options)}/>
 
          <Grid
             rows={['flex']}

@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import { setAppStatusLoading, setAppStatusMessage, setAppStatusError } from './section-status';
 import Promise from 'bluebird';
+import { postWithToken } from '../../service/shell-server';
 
 // define action types
 const FIND_DUPLICATE_IMAGES = 'FIND_DUPLICATE_IMAGES'
@@ -10,17 +11,24 @@ const SET_SEARCH_DUPLICATE_STATUS_ERROR = 'SET_SEARCH_DUPLICATE_STATUS_ERROR'
 const SET_SEARCH_DUPLICATE_STATUS_DATA = 'SET_SEARCH_DUPLICATE_STATUS_DATA'
 
 // define actions
-export const findDuplicateImages = () => (
+export const findDuplicateImages = (payload) => (
     (dispatch) => {
         dispatch(setLoading())
-        Promise.delay(2000).then(()=>{
-            //return Promise.reject('Error finding duplicate')
-            dispatch(setData({
-                status: 'data',
-                type: 'image',
-                mediaUrl: 'https://tattle-media.s3.amazonaws.com/post_image_1.jpeg'
-            }))
-        })
+
+        console.log('==');
+        console.log(payload.data.query)
+        console.log(localStorage.getItem('token'))
+
+        postWithToken(
+            '/search/duplicate',
+            {
+                url: payload.data.query
+            },
+            localStorage.getItem('token')
+        )
+        .then((result) => {
+            console.log(result)
+            dispatch(setData(result.data))})
         .catch((err)=> {
             console.log(err);
             dispatch(setError('Error Loading Duplicates'));
