@@ -142,7 +142,7 @@ const SectionSearchWhatsappPosts = () => {
       console.log('searched : ', payload);
       
       dispatch(findDuplicateImages(payload));
-      // dispatch(findSimilarFactCheckedStories())
+      dispatch(findSimilarFactCheckedStories(payload))
 
       // dispatch( setAppStatusError('Trying to connect to network') )
       
