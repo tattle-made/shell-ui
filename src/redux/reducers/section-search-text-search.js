@@ -1,11 +1,10 @@
 import { types } from '../actions/section-search-text-search';
 
 const {
-    FIND_DUPLICATE_IMAGES,
-    FIND_DUPLICATE_VIDEOS,
-    SET_SEARCH_DUPLICATE_STATUS_LOADING,
-    SET_SEARCH_DUPLICATE_STATUS_ERROR,
-    SET_SEARCH_DUPLICATE_STATUS_DATA
+    FIND_MATCHING_TEXT,
+    SET_SEARCH_MATCHING_TEXT_STATUS_LOADING,
+    SET_SEARCH_MATCHING_TEXT_STATUS_ERROR,
+    SET_SEARCH_MATCHING_TEXT_STATUS_DATA
 } = types;
 
 const initialState = {
@@ -14,15 +13,13 @@ const initialState = {
 
 const sectionSearchTextSearch = (state=initialState, action) => {
     switch(action.type){
-        case FIND_DUPLICATE_IMAGES:
+        case FIND_MATCHING_TEXT:
             return state;
-        case FIND_DUPLICATE_VIDEOS:
-            return state;
-        case SET_SEARCH_DUPLICATE_STATUS_LOADING:
+        case SET_SEARCH_MATCHING_TEXT_STATUS_LOADING:
             return action.data;
-        case SET_SEARCH_DUPLICATE_STATUS_ERROR:
+        case SET_SEARCH_MATCHING_TEXT_STATUS_ERROR:
             return action.data;
-        case SET_SEARCH_DUPLICATE_STATUS_DATA:
+        case SET_SEARCH_MATCHING_TEXT_STATUS_DATA:
             return action.data;
         default:
             return state;

@@ -19,9 +19,9 @@ export const findMatchingText = (payload) => (
         console.log(localStorage.getItem('token'))
 
         postWithToken(
-            '/search/duplicate',
+            '/search/find-text-in-image',
             {
-                url: payload.data.query
+                text: payload.data.query
             },
             localStorage.getItem('token')
         )
@@ -30,7 +30,7 @@ export const findMatchingText = (payload) => (
             dispatch(setData(result.data))})
         .catch((err)=> {
             console.log(err);
-            dispatch(setError('Error Loading Duplicates'));
+            dispatch(setError('Error Finding Matches'));
         })
     }
 )
