@@ -47,3 +47,7 @@ Deploy notes
 * S3_AUTH_ENDPOINT in SectionSearchWhatsappPosts.js
 
 Comment out the apt fields in config.js
+
+
+# Development
+* `npm run setup:config:local`

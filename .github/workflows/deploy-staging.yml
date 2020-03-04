@@ -25,4 +25,5 @@ jobs:
         aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} 
         aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws configure set region ap-south-1
+        ./src/config/setup-config.sh DEVELOPMENT
         aws s3 sync ./build s3://shell-dev.tattle.co.in

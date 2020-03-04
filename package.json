@@ -51,6 +51,7 @@
   },
   "homepage": "http://13.235.176.60/",
   "scripts": {
+    "setup:config:local" : "./src/config/setup-config.sh LOCALHOST",
     "sass": "node-sass -w src/view/style/sass/stylesheet.scss src/view/style/stylesheet.css",
     "start": "react-scripts start",
     "build": "react-scripts build",

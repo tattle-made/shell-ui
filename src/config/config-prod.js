@@ -1,0 +1,1 @@
+export const ARCHIVE_SERVER_PATH = 'https://archive-server.tattle.co.in';
