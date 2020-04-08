@@ -27,6 +27,8 @@ const getRoutePermissions = route => {
       return [ADMIN, EDITOR, SUBSCRIBER];
     case '/post/:id':
       return [ADMIN, EDITOR, SUBSCRIBER];
+    case '/posts/:id/metadata':
+      return [ADMIN, EDITOR, SUBSCRIBER];
     case '/posts':
       return [ADMIN, EDITOR, SUBSCRIBER];
     case '/users':

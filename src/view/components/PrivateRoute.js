@@ -12,6 +12,11 @@ const PrivateRoute = ({ component: Component, auth, userRole, ...rest }) => {
   if (allowedRoles.includes(userRole)) {
     authorized = true;
   }
+
+  console.log('----')
+  console.log({authorized, auth, userRole, ...rest})
+  console.log('----')
+
   return (
     <Route
       {...rest}
