@@ -5,12 +5,16 @@ import { faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 import PreviewFormatterTable from '../../components/PreviewFormatterTable';
 import { BodyOne } from '../../atomic-components/text';
 import Moment from 'moment';
+import { Box, Button } from 'grommet'
+import {Database} from 'react-feather'
+import { Link } from 'react-router-dom';
 
 const actionIconsFormatter = (cell, row, rowIndex, extraData) => {
   const data = extraData[0][0];
   const page = extraData[1];
+
   return (
-    <div>
+    <Box gap={'small'} direction={'row'}>
       <AccessControl
         allowedPermissions={['user:canDelete']}
         renderNoAccess={() => {}}
@@ -24,7 +28,10 @@ const actionIconsFormatter = (cell, row, rowIndex, extraData) => {
         />
       </AccessControl>
       <FontAwesomeIcon icon={faCheck} />
-    </div>
+      <Link to={`/posts/${row.id}/metadata`}>
+        <Database size={28}/> 
+      </Link>
+    </Box>
   );
 };
 

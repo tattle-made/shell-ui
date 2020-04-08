@@ -33,6 +33,7 @@ import AccessControl from './AccessControl';
 import Queue from '../pages/Queue';
 import { LogOut } from 'react-feather';
 import { useSelector, useDispatch } from 'react-redux';
+import PostMetadata from '../pages/PostMetadata';
 
 const {AppShell, LayoutPortal} = Layout;
 const { Status, AppLogo } = Atoms;
@@ -42,8 +43,8 @@ const SideNav = ({location}) => {
   const sectionStatus = useSelector(state => state.sectionStatus)
   const dispatch = useDispatch();
 
-  console.log('===')
-  console.log(sectionStatus);
+  // console.log('===')
+  // console.log(sectionStatus);
   
   const onMenuItemClick = (e) => {
     e.stopPropagation();
@@ -55,6 +56,8 @@ const SideNav = ({location}) => {
   }
 
   const mainContent = (route) => {
+    console.log('route : ', route)
+
     if (route === '/posts' || route.includes('/posts/')) {
       return <PostsTable />;
     } else if (route === '/search') {
@@ -71,6 +74,8 @@ const SideNav = ({location}) => {
       return <UsersTable />;
     } else if (route === '/queue') {
       return <Queue/>
+    } else if (route.includes('/posts') && route.includes('/metadata')){
+      return <PostMetadata/>
     } else {
       return <PostsTableItem />;
     }
