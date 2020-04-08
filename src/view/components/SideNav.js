@@ -57,8 +57,12 @@ const SideNav = ({location}) => {
 
   const mainContent = (route) => {
     console.log('route : ', route)
-
-    if (route === '/posts' || route.includes('/posts/')) {
+    var patPostMetadata = new RegExp('/posts/\\d*/metadata')
+    var patPosts = new RegExp()
+    
+    if(route.match(patPostMetadata)){
+      return <PostMetadata/>
+    } else if (route === '/posts' || route.includes('/posts/')) {
       return <PostsTable />;
     } else if (route === '/search') {
       return <SearchInput />;
@@ -74,8 +78,6 @@ const SideNav = ({location}) => {
       return <UsersTable />;
     } else if (route === '/queue') {
       return <Queue/>
-    } else if (route.includes('/posts') && route.includes('/metadata')){
-      return <PostMetadata/>
     } else {
       return <PostsTableItem />;
     }

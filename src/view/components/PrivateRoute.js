@@ -21,15 +21,15 @@ const PrivateRoute = ({ component: Component, auth, userRole, ...rest }) => {
     <Route
       {...rest}
       render={props =>
-        auth.isAuthenticated === true ? (
-          authorized === true ? (
+        auth.isAuthenticated ? 
+        (
+          authorized ? 
             <Component {...props} />
-          ) : (
+          :
             <PermissionDenied />
-          )
-        ) : (
+        ) 
+        : 
           <Redirect to='/' />
-        )
       }
     />
   );
