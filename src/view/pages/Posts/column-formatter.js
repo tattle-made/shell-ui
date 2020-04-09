@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AccessControl from '../../components/AccessControl';
 import { faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 import PreviewFormatterTable from '../../components/PreviewFormatterTable';
-import { BodyOne } from '../../atomic-components/text';
 import Moment from 'moment';
-import { Box, Button } from 'grommet'
+import { Box } from 'grommet'
 import {Database} from 'react-feather'
 import { Link } from 'react-router-dom';
 

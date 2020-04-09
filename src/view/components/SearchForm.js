@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import { faSearch, faUpload } from '@fortawesome/free-solid-svg-icons';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
-import {HeadingOne, HeadingTwo, HeadingThree, BodyOne, BodyTwo, SubHeadingOne} from '../atomic-components/text'
-import { Button, Form,  Container, Row, Col, Spinner } from 'react-bootstrap';
+import {BodyOne} from '../atomic-components/text'
+import { Form,  Col } from 'react-bootstrap';
 import StatefulButton from '../atomic-components/StatefulButton'
 
 class SearchForm extends Component {

@@ -14,14 +14,9 @@ import {
 } from '../../../redux/actions/post';
 
 //components
-import BreadCrumb from '../../atomic-components/BreadCrumb';
 import Table from '../../atomic-components/Table';
-import PrimaryActionTable from '../../components/PrimaryActionPostTable';
 import columnFactory from './column-data';
-import SearchPostFilterParameters from '../../components/SearchPostFilterParameters';
-
 import { onSearch } from './post-controller';
-
 import {Spinner} from 'react-bootstrap'
 
 import {SOCKET_URL} from '../../../service/shell-server'

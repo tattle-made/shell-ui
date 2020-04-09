@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import axios from 'axios';
 import {get} from '../../service/shell-server'
-import {Container} from 'react-bootstrap'
 
 const imageSource = (userId, fileName) => {
     console.log({userId, fileName});

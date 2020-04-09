@@ -1,16 +1,16 @@
 import React from 'react'
-import {Button, Spinner} from 'react-bootstrap'
-import {HeadingTwo} from '../atomic-components/text'
+import {Button, Spinner } from 'react-bootstrap'
+import { HeadingTwo } from '../atomic-components/text'
 
 const StatefulButton = (props) => {
     return(
-        props.status==='default' || props.status==false
+        props.status==='default' || props.status===false
         ? 
             <Button variant="color-primary-one" type="submit">
                 {props.label}
             </Button>
         :
-        props.status==='upload' || props.status==true
+        props.status==='upload' || props.status===true
         ?
             <Button variant="color-primary-one" disabled>
                 <Spinner

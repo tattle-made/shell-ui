@@ -1,12 +1,8 @@
 import React,{useState} from 'react'
-import { Box, Heading, Tab, Tabs, Button } from 'grommet'
-import {Atoms, Molecules} from '@tattle-made/ui'
+import { Box, Heading, Tab, Tabs } from 'grommet'
 import MetadataTabFactCheckService from './MetadataTabFactCheckService';
 import MetadataTabTattle from './MetadataTabTattle';
 import MetadataTabMSR from './MetadataTabMSR';
-const {EditableText, EditableEnum, EditableDate, EditableDateRange, EditableNumber, EditableLocationCoord} = Molecules
-
-const enumOptions = ['Photo', 'Video', 'Other Media'];
 
 var textData = {'id':1, 'type':'text', 'label':'Text', 'value':'Lorem ipsum.', 'author':100};
 var numberData = {'id':2, 'type':'number', 'label':'Number', 'value': 15, 'author':101};
@@ -33,25 +29,7 @@ var dataObj = {
 **/
 
 const PostMetadata = () => {
-    const [currentData, setCurrentData] = useState(dataObj)
-    var tabElems = [currentData.textData, currentData.dateRangeData];
-    const syncIt = (elems) => {
-        elems.forEach(function (tabElem) {
-            console.log(tabElem);
-        });
-    }
-    const updateData = (data) => {
-        for(var key in currentData)
-        {
-            if(currentData[key].id == data.id)
-            {
-                var newData = {...currentData};
-                newData[key] = data;
-                setCurrentData(newData);
-                return;
-            }
-        }
-    }
+    // const [currentData, setCurrentData] = useState(dataObj)
     return (
         <Box direction={'column'} margin={'small'}>
             <Heading level={1}> Metadata </Heading>
